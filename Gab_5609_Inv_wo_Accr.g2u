@@ -1,0 +1,441 @@
+Program.Sub.ScreenSU.Start
+Gui.Form..Create
+Gui.Form..Size(16275,10185)
+Gui.Form..MinX(0)
+Gui.Form..MinY(0)
+Gui.Form..Position(0,0)
+Gui.Form..BackColor(-2147483633)
+Gui.Form..MousePointer(0)
+Gui.Form..Event(UnLoad,Form_UnLoad)
+Gui.Form..Sizeable(False)
+Gui.Form..Caption("Invoices without Accruals")
+Gui.Form.GsGridControl1.Create(GsGridControl)
+Gui.Form.GsGridControl1.Size(15795,7965)
+Gui.Form.GsGridControl1.Position(120,1470)
+Gui.Form.GsGridControl1.Event(RowCellClick,GsGridControl1_RowCellClick)
+Gui.Form.lbl1.Create(Label,"Vendor #",True,765,255,0,2070,180,True,0,"Arial",8,-2147483633,0)
+Gui.Form.lbl2.Create(Label,"Vendor Name",True,1080,255,0,4230,180,True,0,"Arial",8,-2147483633,0)
+Gui.Form.lbl3.Create(Label,"PO",True,315,255,0,180,180,True,0,"Arial",8,-2147483633,0)
+Gui.Form.lbl4.Create(Label,"Date",True,435,255,0,6345,630,True,0,"Arial",8,-2147483633,0)
+Gui.Form.lbl5.Create(Label,"User",True,450,255,0,180,630,True,0,"Arial",8,-2147483633,0)
+Gui.Form.lbl6.Create(Label,"Amount",True,660,255,0,1950,630,True,0,"Arial",8,-2147483633,0)
+Gui.Form.lbl7.Create(Label,"Received",True,795,255,0,4095,630,True,0,"Arial",8,-2147483633,0)
+Gui.Form.lbl8.Create(Label,"Invoice",True,630,255,0,8565,180,True,0,"Arial",8,-2147483633,0)
+Gui.Form.lbl9.Create(Label,"Document",True,825,255,0,180,1065,True,0,"Arial",8,-2147483633,0)
+Gui.Form.txtVendorID.Create(TextBox,"",True,1215,300,0,2940,105,True,0,"Arial",8,-2147483643,1)
+Gui.Form.txtVendorID.Locked(True)
+Gui.Form.ddlPO.Create(DropDownList)
+Gui.Form.ddlPO.Size(1350,330)
+Gui.Form.ddlPO.Position(525,105)
+Gui.Form.ddlPO.DefaultValue("")
+Gui.Form.ddlPO.Event(LostFocus,ddlPO_LostFocus)
+Gui.Form.txtInvoice.Create(TextBox,"",True,1215,300,0,9255,105,True,0,"Arial",8,-2147483643,1)
+Gui.Form.txtUser.Create(TextBox,"",True,1215,300,0,660,555,True,0,"Arial",8,-2147483643,1)
+Gui.Form.txtAmount.Create(TextBox,"",True,1215,300,0,2730,555,True,0,"Arial",8,-2147483643,1)
+Gui.Form.txtAmount.NumericOnly(1)
+Gui.Form.dtp1.Create(DatePicker)
+Gui.Form.dtp1.Size(1755,285)
+Gui.Form.dtp1.Position(6900,555)
+Gui.Form.txtDocFile.Create(TextBox,"",True,3075,300,0,1125,990,True,0,"Arial",8,-2147483643,1)
+Gui.Form.txtDocFile.DefaultValue("")
+Gui.Form.txtDocFile.ToolTip("Drag and Drop File Here or Input File's Address")
+Gui.Form.cmdAdd.Create(Button)
+Gui.Form.cmdAdd.Size(855,375)
+Gui.Form.cmdAdd.Position(8745,510)
+Gui.Form.cmdAdd.Caption("Add")
+Gui.Form.cmdAdd.DefaultValue("")
+Gui.Form.cmdAdd.Event(Click,cmdAdd_Click)
+Gui.Form.cmdRefresh.Create(Button)
+Gui.Form.cmdRefresh.Size(855,375)
+Gui.Form.cmdRefresh.Position(9675,510)
+Gui.Form.cmdRefresh.Caption("Refresh")
+Gui.Form.cmdRefresh.Event(Click,cmdRefresh_Click)
+Gui.Form.cmdSendToHist.Create(Button)
+Gui.Form.cmdSendToHist.Size(2220,375)
+Gui.Form.cmdSendToHist.Position(8340,945)
+Gui.Form.cmdSendToHist.Caption("Send Selected To History")
+Gui.Form.cmdSendToHist.Event(Click,cmdSendToHist_Click)
+Gui.Form.pic1.Create(PictureBox)
+Gui.Form.pic1.Size(4890,1335)
+Gui.Form.pic1.Position(11115,90)
+Gui.Form.txtReceived.Create(TextBox,"False",True,1215,300,0,5040,555,False,0,"Arial",8,-2147483643,1)
+Gui.Form.txtReceived.Locked(True)
+Gui.Form.lbl10.Create(Label,"Notes",True,600,255,0,4335,1065,True,0,"Arial",8,-2147483633,0)
+Gui.Form.txtNotes.Create(TextBox,"",True,3270,300,0,4965,990,True,0,"Arial",8,-2147483643,1)
+Gui.Form.txtVendorName.Create(TextBox,"",True,3105,300,0,5400,105,True,0,"Arial",8,-2147483643,1)
+Gui.Form.txtVendorName.Locked(True)
+Program.Sub.ScreenSU.End
+
+Program.Sub.Preflight.Start
+Program.Sub.Preflight.End
+
+Program.Sub.Main.Start
+	F.ODBC.Connection!conMain.OpenConnection(V.Ambient.PDSN, V.Ambient.PUser, V.Ambient.PPass)
+	
+	'Find Images
+	V.Local.sImageAddress.Declare(string)
+	V.Local.sIconAddress.Declare(string)
+	F.Intrinsic.String.Build("{0}\ART\gss2.ico", V.Caller.GlobalDir, V.Local.sIconAddress)
+	gui.Form..Icon(V.Local.sIconAddress)
+	F.Intrinsic.String.Build("{0}\ART\GAB_GSS_Logo_Green_Dash.png", V.Caller.GlobalDir, V.Local.sImageAddress)
+	gui.Form.pic1.Picture(V.Local.sImageAddress)
+	
+	
+	F.Intrinsic.Control.CallSub(CreateTableIf)
+	F.Intrinsic.Control.CallSub(CreateFile)
+	F.Intrinsic.Control.CallSub(FillUserText)
+	F.Intrinsic.Control.CallSub(FillDropDownLists)
+	gui.Form.txtDocFile.Event("DRAGDROPFILE",Dragdrop)
+	gui.Form..Show
+	F.Intrinsic.Control.CallSub(LoadDT)
+
+Program.Sub.Main.End
+
+Program.Sub.DragDrop.Start
+	V.Local.sFiles.Declare(string)
+	V.Local.i.Declare(long)
+	
+	F.Intrinsic.String.Split(V.Args.Files, "*!*", V.Local.sFiles)
+	
+	F.Intrinsic.Control.For(V.Local.i, 0, V.Local.sFiles.UBound, 1)
+		
+		gui.Form.txtDocFile.Text(V.Local.sFiles(V.Local.i))
+	
+	F.Intrinsic.Control.Next(V.Local.i)
+	
+Program.Sub.DragDrop.End
+
+Program.Sub.LoadDT.Start
+	'Reset Table if it exists
+	F.Intrinsic.Control.If(V.DataTable.dtMain.Exists)
+		F.Intrinsic.Control.CallSub(Serialize)
+		F.Data.DataTable.Close("dtMain")
+	F.Intrinsic.Control.EndIf
+	
+	'Create Datatable
+	F.ODBC.Connection!conMain.Execute("select * from GAB_5609_AP_IVTCK")
+	F.Data.DataTable.CreateFromSQL("dtMain", "conMain", "select Vendor_NO as 'Vendor #', Vendor_Name as 'Vendor Name', PO, Date_Made as 'Date', Invoice, User_Name as 'Username', Amount, Received, Doc, Notes, Program_ID from GAB_5609_AP_IVTCK", true)
+	F.Data.DataTable.AddColumn("dtMain", "X", "boolean")	
+	
+	'Set Up Checkboxes
+	V.Local.i.Declare(long)
+	F.Intrinsic.Control.For(V.Local.i,0,V.DataTable.dtMain.RowCount--,1)
+		F.Data.DataTable.SetValue("dtMain",V.Local.i,"X",False)
+	F.Intrinsic.Control.Next(V.Local.i)
+	
+	'Create Gridview
+	gui.Form.GsGridControl1.AddGridviewFromDatatable("gvMain", "dtMain")
+	
+	F.Intrinsic.Control.CallSub(FormatGV)
+	
+Program.Sub.LoadDT.End
+
+Program.Sub.GsGridControl1_RowCellClick.Start
+	'Figure out which column was click and call the proper subroutine, setting iRowIndex to the index of the row
+	V.Global.iRowIndex.Declare(long)
+	F.Intrinsic.Control.If(V.Args.Column, =, "X")
+		V.Global.iRowIndex.Set(V.Args.RowIndex)
+		F.Intrinsic.Control.CallSub(ToggleHistory)
+	F.Intrinsic.Control.ElseIf(V.Args.Column, =, "Doc")
+		V.Global.iRowIndex.Set(V.Args.RowIndex)
+		F.Intrinsic.Control.CallSub(DocumentClicked)
+	F.Intrinsic.Control.EndIf
+	
+Program.Sub.GsGridControl1_RowCellClick.End
+
+Program.Sub.ToggleHistory.Start
+	F.Intrinsic.Control.If(V.DataTable.dtMain(V.Global.iRowIndex).X!FIELDVAL, =, False)
+		F.Data.DataTable.SetValue("dtMain", V.Global.iRowIndex, "X", True)
+	F.Intrinsic.Control.ElseIf(V.DataTable.dtMain(V.Global.iRowIndex).X!FIELDVAL, =, True)
+		F.Data.DataTable.SetValue("dtMain", V.Global.iRowIndex, "X", False)
+	F.Intrinsic.Control.EndIf
+	
+Program.Sub.ToggleHistory.End
+
+Program.Sub.DocumentClicked.Start
+	'Open Document
+	V.Local.sDocName.Declare(string)
+	V.Local.sAddress.Declare(string)
+	V.Local.sDocName.Set(V.DataTable.dtMain(V.Global.iRowIndex).Doc!FIELDVAL)
+	F.Intrinsic.Control.If(V.Local.sDocName, <>, "No File                ")
+		F.Intrinsic.String.Build("{0}\InvoiceScans\{1}", V.Caller.GasDir, V.Local.sDocName, V.Local.sAddress)
+		F.Intrinsic.Task.ShellExec(handle, "", V.Local.sAddress, "Open", "", 1)
+	F.Intrinsic.Control.EndIf
+Program.Sub.DocumentClicked.End
+
+Program.Sub.CreateFile.Start
+	'Build directory if it does not exist
+	V.Local.bRet.Declare(boolean)
+	V.Local.sAddress.Declare(string)
+	F.Intrinsic.String.Build("{0}\InvoiceScans", V.Caller.GasDir, V.Local.sAddress)
+	F.Intrinsic.File.Exists(V.Local.sAddress, V.Local.bRet)
+	F.Intrinsic.Control.If(V.Local.bRet, =, False)
+		F.Intrinsic.File.CreateDir(V.Local.sAddress)
+	F.Intrinsic.Control.EndIf
+	
+Program.Sub.CreateFile.End
+
+Program.Sub.FormatGV.Start
+	'Format Date
+	gui.Form.GsGridControl1.SetColumnProperty("gvMain","Date","DisplayCustomDateTime","d")
+	
+	'Bold Titles
+	gui.Form.GsGridControl1.SetColumnProperty("gvMain","Vendor #","HeaderFontBold", True)
+	gui.Form.GsGridControl1.SetColumnProperty("gvMain","Vendor Name","HeaderFontBold", True)
+	gui.Form.GsGridControl1.SetColumnProperty("gvMain","PO","HeaderFontBold", True)
+	gui.Form.GsGridControl1.SetColumnProperty("gvMain","Date","HeaderFontBold", True)
+	gui.Form.GsGridControl1.SetColumnProperty("gvMain","Invoice","HeaderFontBold", True)
+	gui.Form.GsGridControl1.SetColumnProperty("gvMain","Username","HeaderFontBold", True)
+	gui.Form.GsGridControl1.SetColumnProperty("gvMain","Amount","HeaderFontBold", True)
+	gui.Form.GsGridControl1.SetColumnProperty("gvMain","Received","HeaderFontBold", True)
+	gui.Form.GsGridControl1.SetColumnProperty("gvMain","Doc","HeaderFontBold", True)
+	gui.Form.GsGridControl1.SetColumnProperty("gvMain","X","HeaderFontBold", True)
+	gui.Form.GsGridControl1.SetColumnProperty("gvMain","Notes","HeaderFontBold", True)
+	
+	'Odd Row Coloring
+	gui.Form.GsGridControl1.SetGridViewProperty("gvMain","EnableAppearanceOddRow",True)
+		
+	'Center Align Header
+	gui.Form.GsGridControl1.SetColumnProperty("gvMain","X","HeaderHAlignment","Center")
+	
+	'Center Align Cell
+	gui.Form.GsGridControl1.SetColumnProperty("gvMain","X","CellHAlignment","Center")
+	
+	'Fixed Width and Stationary X
+	gui.Form.GsGridControl1.SetColumnProperty("gvMain", "X", "Width", 30)
+	gui.Form.GsGridControl1.SetColumnProperty("gvMain", "X", "FixedWidth", True)
+	gui.Form.GsGridControl1.SetColumnProperty("gvMain", "X", "AllowMove", False)
+	
+	V.Local.iColumnIndex.Declare(long)
+	Gui.Form.GsGridControl1.GetColumnIndexByName("gvMain", "Doc", V.Local.iColumnIndex)
+	
+	V.Local.i.Declare(long)
+	F.Intrinsic.Control.For(V.Local.i, 0, V.DataTable.dtMain.RowCount--, 1)
+		F.Intrinsic.Control.If(V.DataTable.dtMain(V.Local.i).Doc!FIELDVAL, <>, "No File                ")
+			Gui.Form.GsGridControl1.SetCellAppearance("gvMain", V.Local.iColumnIndex, V.Local.i, "FontUnderline", "True")
+			Gui.Form.GsGridControl1.SetCellAppearance("gvMain", V.Local.iColumnIndex, V.Local.i, "Forecolor", "Blue")
+		F.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.Next(V.Local.i)
+	
+'	Make Document Column look like a link
+'	gui.Form.GsGridControl1.SetColumnProperty("gvMain", "Doc", "CellForeColor","Blue")
+'	gui.Form.GsGridControl1.SetColumnProperty("gvMain", "Doc", "CellFontUnderline", True)
+	
+	'Disable Edit
+	gui.Form.GsGridControl1.SetColumnProperty("gvMain", "Vendor #", "AllowEdit", False)
+	gui.Form.GsGridControl1.SetColumnProperty("gvMain", "Vendor Name", "AllowEdit", False)
+	gui.Form.GsGridControl1.SetColumnProperty("gvMain", "Date", "AllowEdit", False)
+	gui.Form.GsGridControl1.SetColumnProperty("gvMain", "Username", "AllowEdit", False)
+	gui.Form.GsGridControl1.SetColumnProperty("gvMain", "Amount", "AllowEdit", False)
+	gui.Form.GsGridControl1.SetColumnProperty("gvMain", "Received", "AllowEdit", False)
+	gui.Form.GsGridControl1.SetColumnProperty("gvMain", "Doc", "AllowEdit", False)
+	gui.Form.GsGridControl1.SetColumnProperty("gvMain", "PO", "AllowEdit", False)
+	gui.Form.GsGridControl1.SetColumnProperty("gvMain", "Invoice", "AllowEdit", False)
+	gui.Form.GsGridControl1.SetColumnProperty("gvMain", "X", "AllowEdit", False)
+	gui.Form.GsGridControl1.SetColumnProperty("gvMain", "Notes", "AllowEdit", False)
+
+	'Adjust width
+	'gui.Form.GsGridControl1.BestFitColumns("gvMain")
+	gui.Form.GsGridControl1.SetColumnProperty("gvMain", "Vendor #", "Width", 50)
+	gui.Form.GsGridControl1.SetColumnProperty("gvMain", "Vendor Name", "Width", 120)
+	gui.Form.GsGridControl1.SetColumnProperty("gvMain", "Doc", "Width", 90)
+	gui.Form.GsGridControl1.SetColumnProperty("gvMain", "Received", "Width", 40)
+	gui.Form.GsGridControl1.SetColumnProperty("gvMain", "Date", "Width", 40)	
+	gui.Form.GsGridControl1.SetColumnProperty("gvMain", "PO", "Width", 35)
+	gui.Form.GsGridControl1.SetColumnProperty("gvMain", "Username", "Width", 50)
+	
+	'Set ID Column invisible
+	gui.Form.GsGridControl1.SetColumnProperty("gvMain", "Program_ID", "Visible", False)
+	
+	'Set Main View
+	gui.Form.GsGridControl1.MainView("gvMain")
+	
+	F.Intrinsic.Control.CallSub(Deserialize)
+	
+Program.Sub.FormatGV.End
+
+Program.Sub.CreateTableIf.Start
+	'Create Table GAB_5609_AP_IVTCK if table does not exist
+	V.Local.bTableExists.Declare(boolean)
+	F.ODBC.Connection!conMain.TableExists("GAB_5609_AP_IVTCK", V.Local.bTableExists)
+	F.Intrinsic.Control.If(V.Local.bTableExists, =, False)
+		F.ODBC.Connection!conMain.Execute("CREATE TABLE GAB_5609_AP_IVTCK ( Vendor_NO CHAR(6), Vendor_Name CHAR(30), PO CHAR(7), Date_Made DATE, Invoice CHAR(15), User_Name CHAR(12), Amount NUMERIC(9,2), Received CHAR(5), Notes Char(50), Doc Char(23), Program_ID Numeric(7,0) )")
+	F.Intrinsic.Control.EndIf
+	
+	'Create Table GAB_5609_AP_IVTCK_H if table does not exist
+	F.ODBC.Connection!conMain.TableExists("GAB_5609_AP_IVTCK_H", V.Local.bTableExists)
+	F.Intrinsic.Control.If(V.Local.bTableExists, =, False)
+		F.ODBC.Connection!conMain.Execute("CREATE TABLE GAB_5609_AP_IVTCK_H ( Vendor_NO CHAR(6), Vendor_Name CHAR(30), PO CHAR(7), Date_Made DATE, Invoice CHAR(15), User_Name CHAR(12), Amount NUMERIC(9,2), Received CHAR(5), Notes Char(50), Doc Char(23) )")
+	F.Intrinsic.Control.EndIf
+	
+Program.Sub.CreateTableIf.End
+
+Program.Sub.FillUserText.Start
+	gui.Form.txtUser.Text(V.Caller.User)
+	
+Program.Sub.FillUserText.End
+
+
+Program.Sub.FillDropDownLists.Start
+	V.Local.sRet.Declare(string)
+	
+	'PO Drop Down List
+	'Open Recordset and add each item and sort
+	F.ODBC.Connection!conMain.OpenRecordSetRO("rstPO", "select PURCHASE_ORDER from V_PO_HEADER")
+	F.Intrinsic.Control.DoUntil(V.ODBC.conMain!rstPO.EOF)
+		F.ODBC.conMain!rstPO.Record2String(V.Local.sRet)
+		gui.Form.ddlPO.AddItem(V.Local.sRet)
+		F.ODBC.conMain!rstPO.MoveNext
+	F.Intrinsic.Control.Loop
+	F.ODBC.conMain!rstPO.Close
+	gui.Form.ddlPO.Sorted(true)
+	
+Program.Sub.FillDropDownLists.End
+
+
+Program.Sub.Serialize.Start
+	V.Local.sSerialize.Declare(string)
+	gui.Form.GsGridControl1.Serialize("gvMain", V.Local.sSerialize)
+	F.Global.Registry.AddValue(V.Caller.User, V.Caller.CompanyCode, "gvMain", 5609, 1001, False, "Serialize", False,0,-999.0,1/1/1980,12:00:00 AM, V.Local.sSerialize)
+
+Program.Sub.Serialize.End
+
+Program.Sub.Deserialize.Start
+	V.Local.sSerialize.Declare(string)
+	F.Global.Registry.ReadValue(V.Caller.User, V.Caller.CompanyCode, "gvMain", 5609, 1001, 6,"", V.Local.sSerialize)
+	F.Intrinsic.Control.If(V.Local.sSerialize.Trim,<>,"")
+		gui.Form.GsGridControl1.Deserialize(V.Local.sSerialize)
+	F.Intrinsic.Control.EndIf
+
+Program.Sub.Deserialize.End
+
+Program.Sub.Form_UnLoad.Start
+	F.Intrinsic.Control.If(V.DataTable.dtMain.Exists)
+		F.Intrinsic.Control.CallSub(Serialize)
+	f.Intrinsic.Control.EndIf
+	
+	F.Intrinsic.Control.End
+	
+Program.Sub.Form_UnLoad.End
+Program.Sub.ddlPO_LostFocus.Start
+'Fill in Vendor Name and Number from PO
+	F.Intrinsic.Control.If(V.Screen.Form!ddlPO.Value, <>, "")	
+		v.Local.sQuery.Declare(string)
+		V.Local.sNumber.Declare(string)
+		V.Local.sName.Declare(string)
+		V.Local.iC.Declare(string)
+		F.Intrinsic.String.Build("Select VENDOR from V_PO_Header where PURCHASE_ORDER = '{0}'", V.Screen.Form!ddlPO.Value, V.Local.sQuery)
+		F.ODBC.Connection!conMain.OpenRecordSetRO("rstPOtoNum", V.Local.sQuery)
+		F.ODBC.conMain!rstPOtoNum.Record2String(V.Local.sNumber)
+		F.ODBC.conMain!rstPOtoNum.Close
+		gui.Form.txtVendorID.Text(V.Local.sNumber)
+
+		F.Intrinsic.String.Build("Select NAME_VENDOR from V_PO_VENDOR_BUY where PURCHASE_ORDER = '{0}'", V.Screen.Form!ddlPO.Value, V.Local.sQuery)
+		F.ODBC.Connection!conMain.OpenRecordSetRO("rstPOtoName", V.Local.sQuery)
+		F.ODBC.conMain!rstPOtoName.Record2String(V.Local.sName)
+		F.ODBC.conMain!rstPOtoName.Close
+		gui.Form.txtVendorName.Text(V.Local.sName)
+	F.Intrinsic.Control.EndIf
+Program.Sub.ddlPO_LostFocus.End
+Program.Sub.cmdAdd_Click.Start
+'Add
+
+	'Reformat Date
+	V.Local.sDate.Declare(string)
+	F.Intrinsic.String.Format(V.Screen.Form!dtp1.Value, "yyyy-mm-dd", V.Local.sDate)
+	
+	'Handle File Type and store document name
+	V.Local.sRet.Declare(string)
+	V.Local.sDocName.Declare(String)
+	F.Intrinsic.String.Build("{0}_{1}", V.Screen.Form!ddlPO.Value, V.Local.sDate, V.Local.sRet)
+	V.Local.sLastThree.Declare(string)
+	F.Intrinsic.String.Right(V.Screen.Form!txtDocFile.Text, 3, V.Local.sLastThree)
+	V.Local.sNewAddress.Declare(string)
+	F.Intrinsic.Control.If(V.Local.sLastThree, <>, "")
+		F.Intrinsic.Control.If(V.Local.sLastThree.UCase, =, "PNG")
+			F.Intrinsic.String.Concat(V.Local.sRet, ".png", V.Local.sRet)
+			F.Intrinsic.String.Build("{0}\InvoiceScans\{1}", V.Caller.GasDir, V.Local.sRet, V.Local.sNewAddress)
+		F.Intrinsic.Control.ElseIf(V.Local.sLastThree.UCase, =, "JPG")
+			F.Intrinsic.String.Concat(V.Local.sRet, ".jpg", V.Local.sRet)
+			F.Intrinsic.String.Build("{0}\InvoiceScans\{1}", V.Caller.GasDir, V.Local.sRet, V.Local.sNewAddress)
+		F.Intrinsic.Control.ElseIf(V.Local.sLastThree.UCase, =, "PDF")
+			F.Intrinsic.String.Concat(V.Local.sRet, ".pdf", V.Local.sRet)
+			F.Intrinsic.String.Build("{0}\InvoiceScans\{1}", V.Caller.GasDir, V.Local.sRet, V.Local.sNewAddress)
+		F.Intrinsic.Control.Else
+			F.Intrinsic.UI.Msgbox("Add PDF, JPG, or PNG")
+			F.Intrinsic.Control.ExitSub
+		F.Intrinsic.Control.EndIf
+		F.Intrinsic.File.CopyFile(V.Screen.Form!txtDocFile.Text, V.Local.sNewAddress)
+	F.Intrinsic.Control.Else
+		V.Local.sRet.Set("No File")
+	F.Intrinsic.Control.EndIf
+	
+	'Get ID Number
+	V.Local.iID.Declare(long)
+	V.Local.sRet2.Declare(string)
+	V.Local.iGreatest.Declare(long)
+	F.ODBC.Connection!conMain.OpenRecordSetRO("rstID","select Program_ID from GAB_5609_AP_IVTCK")
+	F.Intrinsic.Control.If(V.ODBC.conMain!rstID.EOF)
+		V.Local.iID.Set(1)
+	F.Intrinsic.Control.Else
+		F.Intrinsic.Control.DoUntil(V.ODBC.conMain!rstID.EOF)	
+			F.ODBC.conMain!rstID.Record2String(V.Local.sRet2)
+			F.Intrinsic.Math.ConvertToLong(V.Local.sRet2, V.Local.iID)
+			F.Intrinsic.Control.If(V.Local.iID, >, V.Local.iGreatest)
+				V.Local.iGreatest.Set(V.Local.iID)
+			F.Intrinsic.Control.EndIf
+			F.ODBC.conMain!rstID.MoveNext
+		F.Intrinsic.Control.Loop
+		F.Intrinsic.Math.Add(1, V.Local.iGreatest, V.Local.iID)
+	F.Intrinsic.Control.EndIf
+	F.ODBC.conMain!rstID.close
+	
+	'Run query to add row
+	V.Local.sQuery.Declare(string)
+	F.Intrinsic.Control.If(V.Screen.Form!txtAmount.Text,=,"")
+		F.Intrinsic.UI.Msgbox("You have to enter an Amount","Value Required")
+	F.Intrinsic.Control.Else
+		F.Intrinsic.String.Build("INSERT INTO GAB_5609_AP_IVTCK ( Vendor_NO, Vendor_Name, PO, Date_Made, Invoice, User_Name, Amount, Received, Notes, Doc, Program_ID) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', {6}, '{7}', '{8}', '{9}', {10})", V.Screen.Form!txtVendorID.Text, V.Screen.Form!txtVendorName.Text, V.Screen.Form!ddlPO.Value, V.Local.sDate, V.Screen.Form!txtInvoice.Text, V.Screen.Form!txtUser.Text, V.Screen.Form!txtAmount.Text,V.Screen.Form!txtReceived.Text,  V.Screen.Form!txtNotes.Text, V.Local.sRet, V.Local.iID, V.Local.sQuery)
+		F.ODBC.Connection!conMain.Execute(V.Local.sQuery)
+	F.Intrinsic.Control.EndIf
+	'Refresh Table
+	F.Intrinsic.Control.CallSub(LoadDT)
+Program.Sub.cmdAdd_Click.End
+Program.Sub.cmdRefresh_Click.Start
+'Refresh
+	
+	F.Intrinsic.Control.CallSub(LoadDT)
+Program.Sub.cmdRefresh_Click.End
+Program.Sub.cmdSendToHist_Click.Start
+'Delete Records
+
+	V.Local.i.Declare(long)
+	V.Local.sQuery.Declare(string)
+	V.Local.sRet.Declare(string)
+	F.Intrinsic.Control.For(V.Local.i, 0, V.DataTable.dtMain.RowCount--, 1)
+		F.Intrinsic.Control.If(V.DataTable.dtMain(V.Local.i).X!FIELDVAL, =, True)
+			'Copy to history table
+			F.ODBC.Connection!conMain.OpenRecordSetRO("rstAll", "select Vendor_NO, Vendor_Name, PO, Date_Made, Invoice, User_Name, Amount, Received, Doc, Notes from GAB_5609_AP_IVTCK")
+			F.ODBC.conMain!rstAll.Record2String(V.Local.sRet)
+			F.ODBC.conMain!rstAll.Close
+			F.Intrinsic.String.Split(V.Local.sRet, "*!*", V.Local.sRet)
+			F.Intrinsic.String.Format(V.Local.sRet(3), "yyyy-mm-dd", V.Local.sRet(3))
+			F.Intrinsic.String.Build("INSERT INTO GAB_5609_AP_IVTCK_H ( Vendor_NO, Vendor_Name, PO, Date_Made, Invoice, User_Name, Amount, Received, Doc, Notes) VALUES ('{0}', '{1}', {2}, '{3}', '{4}', '{5}', {6}, '{7}', '{8}', '{9}')", V.Local.sRet(0), V.Local.sRet(1), V.Local.sRet(2), V.Local.sRet(3), V.Local.sRet(4), V.Local.sRet(5), V.Local.sRet(6), V.Local.sRet(7), V.Local.sRet(8), V.Local.sRet(9), V.Local.sQuery)
+			F.ODBC.Connection!conMain.Execute(V.Local.sQuery)
+			
+			'Delete from Main Table
+			F.Intrinsic.String.Build("DELETE FROM GAB_5609_AP_IVTCK WHERE PROGRAM_ID = {0}", V.DataTable.dtMain(V.Local.i).Program_ID!FIELDVAL, V.Local.sQuery)
+			F.ODBC.Connection!conMain.Execute(V.Local.sQuery)
+		F.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.Next(V.Local.i)
+	
+	F.Intrinsic.Control.CallSub(LoadDT)
+Program.Sub.cmdSendToHist_Click.End
+
+
+
+
+
+
+
+

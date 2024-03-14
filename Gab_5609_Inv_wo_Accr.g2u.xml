@@ -1,0 +1,604 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SyntaxEdit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <BorderStyle>None</BorderStyle>
+  <Pages>
+    <DefaultPage>
+      <Header>
+        <Offset>
+          <X>0</X>
+          <Y>0</Y>
+        </Offset>
+      </Header>
+      <Footer>
+        <Offset>
+          <X>0</X>
+          <Y>0</Y>
+        </Offset>
+      </Footer>
+      <PageSize>
+        <Width>0</Width>
+        <Height>0</Height>
+      </PageSize>
+    </DefaultPage>
+  </Pages>
+  <DisplayStrings />
+  <Selection>
+    <SelectionRect>
+      <Location>
+        <X>0</X>
+        <Y>220</Y>
+      </Location>
+      <Size>
+        <Width>24</Width>
+        <Height>2</Height>
+      </Size>
+      <X>0</X>
+      <Y>220</Y>
+      <Width>24</Width>
+      <Height>2</Height>
+    </SelectionRect>
+    <Options>UseColors OverwriteBlocks SelectLineOnTripleClick CopyLineWhenEmpty SelectWordOnCtrlClick</Options>
+  </Selection>
+  <Gutter>
+    <LineNumbersForeColor>WindowText</LineNumbersForeColor>
+    <Options>PaintLineNumbers PaintBookMarks PaintLineModificators</Options>
+  </Gutter>
+  <Margin>
+    <Visible>false</Visible>
+  </Margin>
+  <LineStyles />
+  <LineSeparator />
+  <Printing>
+    <Footer>
+      <Offset>
+        <X>0</X>
+        <Y>0</Y>
+      </Offset>
+    </Footer>
+    <Header>
+      <Offset>
+        <X>0</X>
+        <Y>0</Y>
+      </Offset>
+    </Header>
+  </Printing>
+  <WhiteSpace />
+  <TextSource>
+    <Position>
+      <X>0</X>
+      <Y>220</Y>
+    </Position>
+    <Lexer>
+      <Scheme>
+        <Author>Quantum Whale, LLC.</Author>
+        <Copyright>Copyright (c) 2004 - 2014 Quantum Whale LLC.</Copyright>
+        <FileType>gas</FileType>
+        <Version>1.5</Version>
+        <Styles>
+          <Style>
+            <Name>idents</Name>
+            <ForeColor>ControlText</ForeColor>
+          </Style>
+          <Style>
+            <Name>numbers</Name>
+            <ForeColor>ControlText</ForeColor>
+          </Style>
+          <Style>
+            <Name>reswords</Name>
+            <ForeColor>Blue</ForeColor>
+          </Style>
+          <Style>
+            <Name>comments</Name>
+            <ForeColor>Green</ForeColor>
+            <PlainText>true</PlainText>
+          </Style>
+          <Style>
+            <Name>xmlcomments</Name>
+            <ForeColor>Gray</ForeColor>
+          </Style>
+          <Style>
+            <Name>symbols</Name>
+            <ForeColor>WindowText</ForeColor>
+          </Style>
+          <Style>
+            <Name>whitespace</Name>
+            <ForeColor>WindowText</ForeColor>
+          </Style>
+          <Style>
+            <Name>strings</Name>
+            <ForeColor>Maroon</ForeColor>
+            <PlainText>true</PlainText>
+          </Style>
+          <Style>
+            <Name>directives</Name>
+            <ForeColor>Blue</ForeColor>
+          </Style>
+          <Style>
+            <Name>htmlparams</Name>
+            <ForeColor>Red</ForeColor>
+          </Style>
+          <Style>
+            <Name>syntax errors</Name>
+            <ForeColor>Red</ForeColor>
+          </Style>
+          <Style>
+            <Name>codes nippets</Name>
+            <ForeColor>Black</ForeColor>
+            <BackColor>255:180:228:180</BackColor>
+          </Style>
+          <Style>
+            <Name>GabReservedWords</Name>
+            <ForeColor>Blue</ForeColor>
+          </Style>
+          <Style>
+            <Name>GabTokenWithBrackets</Name>
+            <ForeColor>Gray</ForeColor>
+          </Style>
+          <Style>
+            <Name>GabFunctionIntrinsicDebug</Name>
+            <ForeColor>White</ForeColor>
+            <BackColor>Red</BackColor>
+            <FontStyle>Bold</FontStyle>
+            <PlainText>true</PlainText>
+          </Style>
+          <Style>
+            <Name>GabVariable</Name>
+            <ForeColor>Teal</ForeColor>
+          </Style>
+          <Style>
+            <Name>GabVariableSystemDefined</Name>
+            <ForeColor>Teal</ForeColor>
+            <FontStyle>Bold Italic</FontStyle>
+          </Style>
+          <Style>
+            <Name>GabGui</Name>
+            <ForeColor>OrangeRed</ForeColor>
+          </Style>
+          <Style>
+            <Name>GabProgramSubStartEnd</Name>
+            <ForeColor>Black</ForeColor>
+            <BackColor>LightGray</BackColor>
+            <FontStyle>Bold</FontStyle>
+            <PlainText>true</PlainText>
+          </Style>
+        </Styles>
+      </Scheme>
+    </Lexer>
+    <TextStrings>
+      <Lines>
+        <string>Program.Sub.ScreenSU.Start</string>
+        <string>Gui.Form..Create</string>
+        <string>Gui.Form..Size(16275,10185)</string>
+        <string>Gui.Form..MinX(0)</string>
+        <string>Gui.Form..MinY(0)</string>
+        <string>Gui.Form..Position(0,0)</string>
+        <string>Gui.Form..BackColor(-2147483633)</string>
+        <string>Gui.Form..MousePointer(0)</string>
+        <string>Gui.Form..Event(UnLoad,Form_UnLoad)</string>
+        <string>Gui.Form..Sizeable(False)</string>
+        <string>Gui.Form.GsGridControl1.Create(GsGridControl)</string>
+        <string>Gui.Form.GsGridControl1.Size(15795,7965)</string>
+        <string>Gui.Form.GsGridControl1.Position(120,1470)</string>
+        <string>Gui.Form.lbl1.Create(Label,"Vendor #",True,765,255,0,195,330,True,0,"Arial",8,-2147483633,0)</string>
+        <string>Gui.Form.lbl2.Create(Label,"Vendor Name",True,1080,255,0,2715,330,True,0,"Arial",8,-2147483633,0)</string>
+        <string>Gui.Form.lbl3.Create(Label,"PO",True,315,255,0,7620,330,True,0,"Arial",8,-2147483633,0)</string>
+        <string>Gui.Form.lbl4.Create(Label,"Date",True,435,255,0,6750,945,True,0,"Arial",8,-2147483633,0)</string>
+        <string>Gui.Form.lbl5.Create(Label,"User",True,450,255,0,240,915,True,0,"Arial",8,-2147483633,0)</string>
+        <string>Gui.Form.lbl6.Create(Label,"Amount",True,660,255,0,2265,930,True,0,"Arial",8,-2147483633,0)</string>
+        <string>Gui.Form.lbl7.Create(Label,"Received",True,795,255,0,4365,945,True,0,"Arial",8,-2147483633,0)</string>
+        <string>Gui.Form.txt1.Create(TextBox,"",True,1215,300,0,1020,240,True,0,"Arial",8,-2147483643,1)</string>
+        <string>Gui.Form.txt1.Event(LostFocus,txt1_LostFocus)</string>
+        <string>Gui.Form.ddl1.Create(DropDownList)</string>
+        <string>Gui.Form.ddl1.Size(3120,330)</string>
+        <string>Gui.Form.ddl1.Position(3915,240)</string>
+        <string>Gui.Form.ddl1.DefaultValue("")</string>
+        <string>Gui.Form.ddl1.Event(LostFocus,ddl1_LostFocus)</string>
+        <string>Gui.Form.dtp1.Create(DatePicker)</string>
+        <string>Gui.Form.dtp1.Size(1935,285)</string>
+        <string>Gui.Form.dtp1.Position(7215,885)</string>
+        <string>Gui.Form.ddl2.Create(DropDownList)</string>
+        <string>Gui.Form.ddl2.Size(1350,330)</string>
+        <string>Gui.Form.ddl2.Position(7995,240)</string>
+        <string>Gui.Form.ddl2.DefaultValue("")</string>
+        <string>Gui.Form.txt2.Create(TextBox,"",True,1215,300,0,780,825,True,0,"Arial",8,-2147483643,1)</string>
+        <string>Gui.Form.txt3.Create(TextBox,"",True,1215,300,0,2985,855,True,0,"Arial",8,-2147483643,1)</string>
+        <string>Gui.Form.txt4.Create(TextBox,"False",True,1215,300,0,5235,870,False,0,"Arial",8,-2147483643,1)</string>
+        <string>Gui.Form.txt4.Locked(True)</string>
+        <string>Gui.Form.cmd1.Create(Button)</string>
+        <string>Gui.Form.cmd1.Size(855,375)</string>
+        <string>Gui.Form.cmd1.Position(9645,855)</string>
+        <string>Gui.Form.cmd1.Caption("Add")</string>
+        <string>Gui.Form.cmd1.DefaultValue("")</string>
+        <string>Gui.Form.cmd1.Event(Click,cmd1_Click)</string>
+        <string>Gui.Form.cmd2.Create(Button)</string>
+        <string>Gui.Form.cmd2.Size(855,375)</string>
+        <string>Gui.Form.cmd2.Position(10575,840)</string>
+        <string>Gui.Form.cmd2.Caption("Refresh")</string>
+        <string>Gui.Form.cmd2.Event(Click,cmd2_Click)</string>
+        <string>Gui.Form.pic1.Create(PictureBox)</string>
+        <string>Gui.Form.pic1.Size(4140,1020)</string>
+        <string>Gui.Form.pic1.Position(11670,165)</string>
+        <string>Gui.Form.pic1.Picture("C:\Global\ART\GAB_GSS_Logo_Green_Dash.png")</string>
+        <string>Gui.Form.lbl8.Create(Label,"Invoice",True,630,255,0,9510,330,True,0,"Arial",8,-2147483633,0)</string>
+        <string>Gui.Form.txt5.Create(TextBox,"",True,1215,300,0,10185,240,True,0,"Arial",8,-2147483643,1)</string>
+        <string>Program.Sub.ScreenSU.End</string>
+        <string />
+        <string>Program.Sub.Preflight.Start</string>
+        <string>Program.Sub.Preflight.End</string>
+        <string />
+        <string>Program.Sub.Main.Start</string>
+        <string>	F.ODBC.Connection!conMain.OpenConnection(V.Ambient.PDSN, V.Ambient.PUser, V.Ambient.PPass)</string>
+        <string />
+        <string>	F.Intrinsic.Control.CallSub(CreateTableIf)</string>
+        <string>	F.Intrinsic.Control.CallSub(FillUserText)</string>
+        <string>	F.Intrinsic.Control.CallSub(FillDropDownLists)</string>
+        <string>	Gui.Form..Show</string>
+        <string>	F.Intrinsic.Control.CallSub(LoadDT)</string>
+        <string />
+        <string>Program.Sub.Main.End</string>
+        <string />
+        <string>Program.Sub.LoadDT.Start</string>
+        <string>	'Reset Table if it exists</string>
+        <string>	F.Intrinsic.Control.If(V.DataTable.dtMain.Exists)</string>
+        <string>		F.Data.DataTable.Close("dtMain")</string>
+        <string>	F.Intrinsic.Control.EndIf</string>
+        <string />
+        <string>	'Create Datatable</string>
+        <string>	F.ODBC.Connection!conMain.Execute("select * from GAB_5609_AP_INVTRACK")</string>
+        <string>	F.Data.DataTable.CreateFromSQL("dtMain", "conMain", "select Vendor_NO as 'Vendor Number', Vendor_Name as 'Vendor Name', PO, Date_Made as 'Date', Invoice, User_Name as 'Username', Amount, Received, Doc from GAB_5609_AP_INVTRACK")</string>
+        <string />
+        <string>	'Create Gridview</string>
+        <string>	Gui.Form.GsGridControl1.AddGridviewFromDatatable("gvMain", "dtMain")</string>
+        <string>	Gui.Form.GsGridControl1.MainView("gvMain")</string>
+        <string />
+        <string>	F.Intrinsic.Control.CallSub(FormatGV)</string>
+        <string />
+        <string>Program.Sub.LoadDT.End</string>
+        <string />
+        <string>Program.Sub.FormatGV.Start</string>
+        <string>	'Format Date</string>
+        <string>	Gui.Form.GsGridControl1.SetColumnProperty("gvMain","Date","DisplayCustomDateTime","d")</string>
+        <string />
+        <string>	'Bold Titles</string>
+        <string>	Gui.Form.GsGridControl1.SetColumnProperty("gvMain","Vendor Number","HeaderFontBold", True)</string>
+        <string>	Gui.Form.GsGridControl1.SetColumnProperty("gvMain","Vendor Name","HeaderFontBold", True)</string>
+        <string>	Gui.Form.GsGridControl1.SetColumnProperty("gvMain","PO","HeaderFontBold", True)</string>
+        <string>	Gui.Form.GsGridControl1.SetColumnProperty("gvMain","Date","HeaderFontBold", True)</string>
+        <string>	Gui.Form.GsGridControl1.SetColumnProperty("gvMain","Invoice","HeaderFontBold", True)</string>
+        <string>	Gui.Form.GsGridControl1.SetColumnProperty("gvMain","Username","HeaderFontBold", True)</string>
+        <string>	Gui.Form.GsGridControl1.SetColumnProperty("gvMain","Amount","HeaderFontBold", True)</string>
+        <string>	Gui.Form.GsGridControl1.SetColumnProperty("gvMain","Received","HeaderFontBold", True)</string>
+        <string>	Gui.Form.GsGridControl1.SetColumnProperty("gvMain","Doc","HeaderFontBold", True)</string>
+        <string />
+        <string>	'Odd Row Coloring</string>
+        <string>	Gui.Form.GsGridControl1.SetGridViewProperty("gvMain","EnableAppearanceOddRow",True)</string>
+        <string />
+        <string>	'Disable Edit</string>
+        <string>	Gui.Form.GsGridControl1.SetColumnProperty("gvMain", "Vendor Number", "AllowEdit", False)</string>
+        <string>	Gui.Form.GsGridControl1.SetColumnProperty("gvMain", "Vendor Name", "AllowEdit", False)</string>
+        <string>	Gui.Form.GsGridControl1.SetColumnProperty("gvMain", "Date", "AllowEdit", False)</string>
+        <string>	Gui.Form.GsGridControl1.SetColumnProperty("gvMain", "Username", "AllowEdit", False)</string>
+        <string>	Gui.Form.GsGridControl1.SetColumnProperty("gvMain", "Amount", "AllowEdit", False)</string>
+        <string>	Gui.Form.GsGridControl1.SetColumnProperty("gvMain", "Received", "AllowEdit", False)</string>
+        <string>	Gui.Form.GsGridControl1.SetColumnProperty("gvMain", "Doc", "AllowEdit", False)</string>
+        <string>	Gui.Form.GsGridControl1.SetColumnProperty("gvMain", "PO", "AllowEdit", False)</string>
+        <string>	Gui.Form.GsGridControl1.SetColumnProperty("gvMain", "Invoice", "AllowEdit", False)</string>
+        <string />
+        <string>	'Adjust width</string>
+        <string>	Gui.Form.GsGridControl1.BestFitColumns("gvMain")</string>
+        <string>Program.Sub.FormatGV.End</string>
+        <string />
+        <string>Program.Sub.CreateTableIf.Start</string>
+        <string>	'Create Table GAB_5609_AP_INVTRACK if table does not exist</string>
+        <string>	V.Local.bTableExists.Declare(boolean)</string>
+        <string>	F.ODBC.Connection!conMain.TableExists("GAB_5609_AP_INVTRACK", V.Local.bTableExists)</string>
+        <string>	F.Intrinsic.Control.If(V.Local.bTableExists, =, False)</string>
+        <string>		F.ODBC.Connection!conMain.Execute("CREATE TABLE GAB_5609_AP_INVTRACK ( Vendor_NO NUMERIC(6,0), Vendor_Name CHAR(30), PO NUMERIC(7,0), Date_Made DATE, Invoice CHAR(15), User_Name CHAR(12), Amount NUMERIC(9,2), Received CHAR(5), Doc Char(15) )")</string>
+        <string>	F.Intrinsic.Control.EndIf</string>
+        <string />
+        <string>Program.Sub.CreateTableIf.End</string>
+        <string />
+        <string>Program.Sub.FillUserText.Start</string>
+        <string />
+        <string>	Gui.Form.Txt2.Text(V.Caller.User)</string>
+        <string />
+        <string>Program.Sub.FillUserText.End</string>
+        <string />
+        <string>Program.Sub.cmd1_Click.Start</string>
+        <string>'Add</string>
+        <string>	'Reformat Date</string>
+        <string>	V.Local.sDate.Declare(string)</string>
+        <string>	F.Intrinsic.String.Format(V.Screen.Form!dtp1.Value, "yyyy-mm-dd", V.Local.sDate)</string>
+        <string>	'Run query to add row</string>
+        <string>	V.Local.sQuery.Declare(string)</string>
+        <string>	F.Intrinsic.String.Build("INSERT INTO GAB_5609_AP_INVTRACK ( Vendor_NO, Vendor_Name, PO, Date_Made, Invoice, User_Name, Amount, Received, Doc) VALUES ({0}, '{1}', {2}, '{3}', '{4}', '{5}', {6}, '{7}', '{8}')", V.Screen.Form!txt1.Text, V.Screen.Form!ddl1.Value.trim, V.Screen.Form!ddl2.Value, V.Local.sDate, V.Screen.Form!txt5.Text, V.Screen.Form!txt2.Text, V.Screen.Form!txt3.Text,V.Screen.Form!txt4.Text, "DOCUMENT", V.Local.sQuery)</string>
+        <string>	F.ODBC.Connection!conMain.Execute(V.Local.sQuery)</string>
+        <string />
+        <string>	'Refresh Table</string>
+        <string>	F.Intrinsic.Control.CallSub(LoadDT)</string>
+        <string />
+        <string>Program.Sub.cmd1_Click.End</string>
+        <string />
+        <string>Program.Sub.cmd2_Click.Start</string>
+        <string>'Refresh</string>
+        <string />
+        <string>	F.Intrinsic.Control.CallSub(LoadDT)</string>
+        <string />
+        <string>Program.Sub.cmd2_Click.End</string>
+        <string />
+        <string>Program.Sub.FillDropDownLists.Start</string>
+        <string>	V.Local.sRet.Declare(string)</string>
+        <string />
+        <string>	'Vendor Name Drop Down List</string>
+        <string>	'Open Recordset and add each item and sort</string>
+        <string>	F.ODBC.Connection!conMain.OpenRecordSetRO("rstVendorNames", "select NAME_VENDOR from V_VENDOR_MASTER")</string>
+        <string>	F.Intrinsic.Control.DoUntil(V.ODBC.conMain!rstVendorNames.EOF)</string>
+        <string>		F.ODBC.conMain!rstVendorNames.Record2String(V.Local.sRet)</string>
+        <string>		Gui.Form.ddl1.AddItem(V.Local.sRet)</string>
+        <string>		F.ODBC.conMain!rstVendorNames.MoveNext</string>
+        <string>	F.Intrinsic.Control.Loop</string>
+        <string>	F.ODBC.conMain!rstVendorNames.Close</string>
+        <string>	Gui.Form.ddl1.Sorted(true)</string>
+        <string />
+        <string>	'PO Drop Down List</string>
+        <string>	'Open Recordset and add each item and sort</string>
+        <string>	F.ODBC.Connection!conMain.OpenRecordSetRO("rstPO", "select PURCHASE_ORDER from V_PO_HEADER")</string>
+        <string>	F.Intrinsic.Control.DoUntil(V.ODBC.conMain!rstPO.EOF)</string>
+        <string>		F.ODBC.conMain!rstPO.Record2String(V.Local.sRet)</string>
+        <string>		Gui.Form.ddl2.AddItem(V.Local.sRet)</string>
+        <string>		F.ODBC.conMain!rstPO.MoveNext</string>
+        <string>	F.Intrinsic.Control.Loop</string>
+        <string>	F.ODBC.conMain!rstPO.Close</string>
+        <string>	Gui.Form.ddl2.Sorted(true)</string>
+        <string />
+        <string>Program.Sub.FillDropDownLists.End</string>
+        <string />
+        <string>Program.Sub.txt1_LostFocus.Start</string>
+        <string>'Fill in Vendor Name from Vendor Number</string>
+        <string />
+        <string>	V.Local.sQuery.Declare(string)</string>
+        <string>	V.Local.sName.Declare(string)</string>
+        <string>	V.Local.iC.Declare(long)</string>
+        <string>	F.Intrinsic.String.Build("Select NAME_VENDOR from V_VENDOR_MASTER where VENDOR = '{0}'", V.Screen.Form!txt1.Text, V.Local.sQuery)</string>
+        <string>	F.ODBC.Connection!conMain.OpenRecordSetRO("rstNumToText", V.Local.sQuery)</string>
+        <string>	F.ODBC.conMain!rstNumToText.Record2String(V.Local.sName)</string>
+        <string>	F.ODBC.conMain!rstNumToText.Close</string>
+        <string>	Gui.Form.ddl1.FindItem(V.Local.sName, =, V.Local.iC)</string>
+        <string>	Gui.Form.ddl1.ListIndex(V.Local.iC)</string>
+        <string />
+        <string>Program.Sub.txt1_LostFocus.End</string>
+        <string />
+        <string>Program.Sub.ddl1_LostFocus.Start</string>
+        <string>'Fill in Vendor Number from Vendor Name</string>
+        <string />
+        <string>	V.Local.sQuery.Declare(string)</string>
+        <string>	V.Local.sNumber.Declare(string)</string>
+        <string>	F.Intrinsic.String.Build("select VENDOR from V_VENDOR_MASTER where NAME_VENDOR = '{0}'", V.Screen.Form!ddl1.Value, V.Local.sQuery)</string>
+        <string>	F.ODBC.Connection!conMain.OpenRecordSetRO("rstTextToNum", V.Local.sQuery)</string>
+        <string>	F.ODBC.conMain!rstTextToNum.Record2String(V.Local.sNumber)</string>
+        <string>	F.ODBC.conMain!rstTextToNum.Close</string>
+        <string>	Gui.Form.txt1.Text(V.Local.sNumber)</string>
+        <string />
+        <string>Program.Sub.ddl1_LostFocus.End</string>
+        <string />
+        <string>Program.Sub.Form_UnLoad.Start</string>
+        <string>F.Intrinsic.Control.End</string>
+        <string />
+        <string>Program.Sub.Form_UnLoad.End</string>
+        <string />
+        <string>Program.Sub.Comments.Start</string>
+        <string>${$0$}$$}$$}$12:00:00 AM$}$False</string>
+        <string>Program.Sub.Comments.End</string>
+      </Lines>
+    </TextStrings>
+  </TextSource>
+  <Scrolling>
+    <WindowOriginY>115</WindowOriginY>
+    <Options>None</Options>
+  </Scrolling>
+  <Outlining>
+    <AllowOutlining>true</AllowOutlining>
+    <ImageSize>8</ImageSize>
+    <Ranges>
+      <Range>
+        <StartPoint>
+          <X>0</X>
+          <Y>0</Y>
+        </StartPoint>
+        <EndPoint>
+          <X>2147483647</X>
+          <Y>55</Y>
+        </EndPoint>
+        <Text>Program.Sub.ScreenSU</Text>
+        <DisplayText>Program.Sub.ScreenSU</DisplayText>
+        <Visible>false</Visible>
+        <Level>0</Level>
+      </Range>
+      <Range>
+        <StartPoint>
+          <X>0</X>
+          <Y>57</Y>
+        </StartPoint>
+        <EndPoint>
+          <X>2147483647</X>
+          <Y>58</Y>
+        </EndPoint>
+        <Text>Program.Sub.Preflight</Text>
+        <DisplayText>Program.Sub.Preflight</DisplayText>
+        <Visible>false</Visible>
+        <Level>0</Level>
+      </Range>
+      <Range>
+        <StartPoint>
+          <X>0</X>
+          <Y>60</Y>
+        </StartPoint>
+        <EndPoint>
+          <X>2147483647</X>
+          <Y>69</Y>
+        </EndPoint>
+        <Text>Program.Sub.Main</Text>
+        <DisplayText>Program.Sub.Main</DisplayText>
+        <Visible>true</Visible>
+        <Level>0</Level>
+      </Range>
+      <Range>
+        <StartPoint>
+          <X>0</X>
+          <Y>71</Y>
+        </StartPoint>
+        <EndPoint>
+          <X>2147483647</X>
+          <Y>87</Y>
+        </EndPoint>
+        <Text>Program.Sub.LoadDT</Text>
+        <DisplayText>Program.Sub.LoadDT</DisplayText>
+        <Visible>true</Visible>
+        <Level>0</Level>
+      </Range>
+      <Range>
+        <StartPoint>
+          <X>0</X>
+          <Y>89</Y>
+        </StartPoint>
+        <EndPoint>
+          <X>2147483647</X>
+          <Y>120</Y>
+        </EndPoint>
+        <Text>Program.Sub.FormatGV</Text>
+        <DisplayText>Program.Sub.FormatGV</DisplayText>
+        <Visible>true</Visible>
+        <Level>0</Level>
+      </Range>
+      <Range>
+        <StartPoint>
+          <X>0</X>
+          <Y>122</Y>
+        </StartPoint>
+        <EndPoint>
+          <X>2147483647</X>
+          <Y>130</Y>
+        </EndPoint>
+        <Text>Program.Sub.CreateTableIf</Text>
+        <DisplayText>Program.Sub.CreateTableIf</DisplayText>
+        <Visible>true</Visible>
+        <Level>0</Level>
+      </Range>
+      <Range>
+        <StartPoint>
+          <X>0</X>
+          <Y>132</Y>
+        </StartPoint>
+        <EndPoint>
+          <X>2147483647</X>
+          <Y>136</Y>
+        </EndPoint>
+        <Text>Program.Sub.FillUserText</Text>
+        <DisplayText>Program.Sub.FillUserText</DisplayText>
+        <Visible>true</Visible>
+        <Level>0</Level>
+      </Range>
+      <Range>
+        <StartPoint>
+          <X>0</X>
+          <Y>138</Y>
+        </StartPoint>
+        <EndPoint>
+          <X>2147483647</X>
+          <Y>151</Y>
+        </EndPoint>
+        <Text>Program.Sub.cmd1_Click</Text>
+        <DisplayText>Program.Sub.cmd1_Click</DisplayText>
+        <Visible>true</Visible>
+        <Level>0</Level>
+      </Range>
+      <Range>
+        <StartPoint>
+          <X>0</X>
+          <Y>153</Y>
+        </StartPoint>
+        <EndPoint>
+          <X>2147483647</X>
+          <Y>158</Y>
+        </EndPoint>
+        <Text>Program.Sub.cmd2_Click</Text>
+        <DisplayText>Program.Sub.cmd2_Click</DisplayText>
+        <Visible>true</Visible>
+        <Level>0</Level>
+      </Range>
+      <Range>
+        <StartPoint>
+          <X>0</X>
+          <Y>160</Y>
+        </StartPoint>
+        <EndPoint>
+          <X>2147483647</X>
+          <Y>185</Y>
+        </EndPoint>
+        <Text>Program.Sub.FillDropDownLists</Text>
+        <DisplayText>Program.Sub.FillDropDownLists</DisplayText>
+        <Visible>true</Visible>
+        <Level>0</Level>
+      </Range>
+      <Range>
+        <StartPoint>
+          <X>0</X>
+          <Y>187</Y>
+        </StartPoint>
+        <EndPoint>
+          <X>2147483647</X>
+          <Y>200</Y>
+        </EndPoint>
+        <Text>Program.Sub.txt1_LostFocus</Text>
+        <DisplayText>Program.Sub.txt1_LostFocus</DisplayText>
+        <Visible>true</Visible>
+        <Level>0</Level>
+      </Range>
+      <Range>
+        <StartPoint>
+          <X>0</X>
+          <Y>202</Y>
+        </StartPoint>
+        <EndPoint>
+          <X>2147483647</X>
+          <Y>213</Y>
+        </EndPoint>
+        <Text>Program.Sub.ddl1_LostFocus</Text>
+        <DisplayText>Program.Sub.ddl1_LostFocus</DisplayText>
+        <Visible>true</Visible>
+        <Level>0</Level>
+      </Range>
+      <Range>
+        <StartPoint>
+          <X>0</X>
+          <Y>215</Y>
+        </StartPoint>
+        <EndPoint>
+          <X>2147483647</X>
+          <Y>218</Y>
+        </EndPoint>
+        <Text>Program.Sub.Form_UnLoad</Text>
+        <DisplayText>Program.Sub.Form_UnLoad</DisplayText>
+        <Visible>true</Visible>
+        <Level>0</Level>
+      </Range>
+      <Range>
+        <StartPoint>
+          <X>0</X>
+          <Y>220</Y>
+        </StartPoint>
+        <EndPoint>
+          <X>2147483647</X>
+          <Y>222</Y>
+        </EndPoint>
+        <Text>Program.Sub.Comments</Text>
+        <DisplayText>Program.Sub.Comments</DisplayText>
+        <Visible>false</Visible>
+        <Level>0</Level>
+      </Range>
+    </Ranges>
+  </Outlining>
+  <HyperText />
+  <Spelling />
+  <Braces />
+</SyntaxEdit>

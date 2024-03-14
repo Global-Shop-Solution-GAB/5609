@@ -1,0 +1,18 @@
+Program.Sub.Preflight.Start
+Program.Sub.Preflight.End
+
+Program.Sub.Main.Start
+	V.Local.sPo.Declare(string)
+	V.Local.sPo.Set(V.Passed.000002)
+'		F.Intrinsic.UI.Msgbox(V.Local.sPo)
+	F.ODBC.Connection!con.OpenConnection(V.Ambient.PDSN, V.Ambient.PUser, V.Ambient.PPass)
+	
+	V.Local.sQuery.Declare(string)
+	F.Intrinsic.String.LPad(V.Local.sPo,"0",7,V.Local.sPo)
+	F.Intrinsic.String.Build("Update GAB_5609_AP_IVTCK set RECEIVED = 'True' where PO = '{0}'", V.Local.sPo, V.Local.sQuery)
+	f.ODBC.Connection!con.Execute(V.Local.sQuery)
+Program.Sub.Main.End
+
+Program.Sub.Comments.Start
+${$0$}$$}$$}$12:00:00 AM$}$False
+Program.Sub.Comments.End
